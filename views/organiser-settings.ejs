@@ -1,0 +1,35 @@
+<!-- START MY CODE (organiser settings page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Settings</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Site Settings Page</h1>
+        <div class="nav">
+            <a class="button" href="/">Main Home</a>
+            <a class="button" href="/attendee">Attendee Home</a>
+        </div>
+        <% if (error) { %>
+            <p class="alert"><%= error %></p>
+        <% } %>
+        <form class="form" method="POST" action="/organiser/settings">
+            <label>
+                Site name
+                <input type="text" name="site_name" value="<%= settings.site_name %>" required />
+            </label>
+            <label>
+                Site description
+                <textarea name="site_description" rows="3" required><%= settings.site_description %></textarea>
+            </label>
+            <button class="button primary" type="submit">Save</button>
+        </form>
+        <a class="button" href="/organiser">Back to Organiser Home</a>
+    </main>
+</body>
+</html>
+<!-- END MY CODE (organiser settings page) -->

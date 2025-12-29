@@ -1,0 +1,58 @@
+<!-- START MY CODE (organiser edit event page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Organiser Edit Event Page</h1>
+        <p class="muted">Created: <%= event.created_at %></p>
+        <div class="nav">
+            <a class="button" href="/">Main Home</a>
+            <a class="button" href="/attendee">Attendee Home</a>
+        </div>
+        <% if (error) { %>
+            <p class="alert"><%= error %></p>
+        <% } %>
+        <form class="form" method="POST" action="/organiser/events/<%= event.event_id %>">
+            <label>
+                Event title
+                <input type="text" name="title" value="<%= event.title %>" required />
+            </label>
+            <label>
+                Event description
+                <textarea name="description" rows="4" required><%= event.description %></textarea>
+            </label>
+            <label>
+                Event date
+                <input type="date" name="event_date" value="<%= event.event_date %>" required />
+            </label>
+            <div class="form-grid">
+            <label>
+                Full ticket capacity
+                <input type="number" name="full_capacity" min="0" value="<%= tickets.full.capacity %>" required />
+            </label>
+            <label>
+                Full ticket price (cents)
+                <input type="number" name="full_price" min="0" value="<%= tickets.full.price_cents %>" required />
+            </label>
+            <label>
+                Concession ticket capacity
+                <input type="number" name="concession_capacity" min="0" value="<%= tickets.concession.capacity %>" required />
+            </label>
+            <label>
+                Concession ticket price (cents)
+                <input type="number" name="concession_price" min="0" value="<%= tickets.concession.price_cents %>" required />
+            </label>
+        </div>
+            <button class="button primary" type="submit">Save</button>
+        </form>
+        <a class="button" href="/organiser">Back to Organiser Home</a>
+    </main>
+</body>
+</html>
+<!-- END MY CODE (organiser edit event page) -->

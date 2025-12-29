@@ -1,0 +1,94 @@
+<!-- START MY CODE (organiser home page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organiser Home</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <% function formatMoney(cents) { return (cents / 100).toFixed(2); } %>
+    <main class="container">
+        <h1>Organiser Home Page</h1>
+        <p class="muted"><strong><%= settings.site_name %></strong> - <%= settings.site_description %></p>
+        <div class="nav">
+            <a class="button" href="/">Main Home</a>
+            <a class="button" href="/attendee">Attendee Home</a>
+        </div>
+        <div class="actions">
+            <a class="button" href="/organiser/settings">Settings</a>
+            <form method="POST" action="/organiser/events/new">
+                <button class="button primary" type="submit">New Event</button>
+            </form>
+        </div>
+
+        <section>
+            <h2>Published</h2>
+            <% if (publishedEvents.length === 0) { %>
+                <p class="muted">Nothing published yet.</p>
+            <% } %>
+            <div class="list">
+                <% publishedEvents.forEach(function (event) { %>
+                    <article class="list-item">
+                        <div class="list-main">
+                            <h3><%= event.title %></h3>
+                            <p class="muted">Date: <%= event.event_date %></p>
+                            <p class="muted">Created: <%= event.created_at %></p>
+                            <p class="muted">Published: <%= event.published_at || "Not published" %></p>
+                            <p>
+                                Full tickets: <%= event.full_capacity || 0 %> @ £<%= formatMoney(event.full_price_cents || 0) %>
+                                | Concession: <%= event.concession_capacity || 0 %> @ £<%= formatMoney(event.concession_price_cents || 0) %>
+                            </p>
+                            <% if ((event.full_capacity || 0) - (event.full_booked || 0) <= 0 && (event.concession_capacity || 0) - (event.concession_booked || 0) <= 0) { %>
+                                <p class="alert">Fully booked</p>
+                            <% } %>
+                            <a href="/attendee/events/<%= event.event_id %>">Share link</a>
+                            <span class="muted">|</span>
+                            <a href="/organiser/events/<%= event.event_id %>/bookings">View bookings</a>
+                        </div>
+                        <div class="list-actions">
+                            <form method="POST" action="/organiser/events/<%= event.event_id %>/delete">
+                                <button class="button danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </article>
+                <% }); %>
+            </div>
+        </section>
+
+        <section>
+            <h2>Drafts</h2>
+            <% if (draftEvents.length === 0) { %>
+                <p class="muted">No drafts yet.</p>
+            <% } %>
+            <div class="list">
+                <% draftEvents.forEach(function (event) { %>
+                    <article class="list-item">
+                        <div class="list-main">
+                            <h3><%= event.title %></h3>
+                            <p class="muted">Date: <%= event.event_date %></p>
+                            <p class="muted">Created: <%= event.created_at %></p>
+                            <p class="muted">Published: <%= event.published_at || "Not published" %></p>
+                            <p>
+                                Full tickets: <%= event.full_capacity || 0 %> @ £<%= formatMoney(event.full_price_cents || 0) %>
+                                | Concession: <%= event.concession_capacity || 0 %> @ £<%= formatMoney(event.concession_price_cents || 0) %>
+                            </p>
+                            <a href="/organiser/events/<%= event.event_id %>/edit">Edit event</a>
+                        </div>
+                        <div class="list-actions">
+                            <form method="POST" action="/organiser/events/<%= event.event_id %>/publish">
+                                <button class="button" type="submit">Publish</button>
+                            </form>
+                            <form method="POST" action="/organiser/events/<%= event.event_id %>/delete">
+                                <button class="button danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </article>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+<!-- END MY CODE (organiser home page) -->

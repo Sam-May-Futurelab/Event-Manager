@@ -1,0 +1,50 @@
+<!-- START MY CODE (organiser bookings page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bookings</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Event Bookings</h1>
+        <p class="muted"><strong><%= event.title %></strong> - <%= event.event_date %></p>
+        <div class="nav">
+            <a class="button" href="/">Main Home</a>
+            <a class="button" href="/organiser">Back to Organiser Home</a>
+        </div>
+
+        <section>
+            <h2>Summary</h2>
+            <p>Full tickets booked: <%= totals.full_booked %></p>
+            <p>Concession tickets booked: <%= totals.concession_booked %></p>
+        </section>
+
+        <section>
+            <h2>Bookings</h2>
+            <% if (bookings.length === 0) { %>
+                <p class="muted">No bookings yet.</p>
+            <% } %>
+            <div class="list">
+                <% bookings.forEach(function (booking) { %>
+                    <article class="list-item">
+                        <div>
+                            <h3><%= booking.attendee_name %></h3>
+                            <p class="muted">Booked: <%= booking.created_at %></p>
+                            <p>Full: <%= booking.full_qty %> | Concession: <%= booking.concession_qty %></p>
+                        </div>
+                        <div class="list-actions">
+                            <form method="POST" action="/organiser/events/<%= event.event_id %>/bookings/<%= booking.booking_id %>/delete">
+                                <button class="button danger" type="submit">Cancel</button>
+                            </form>
+                        </div>
+                    </article>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+<!-- END MY CODE (organiser bookings page) -->

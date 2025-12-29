@@ -1,0 +1,28 @@
+Event Manager video script (2:00–2:20 target)
+
+Intro (10s)
+Hi, this is my Event Manager app built with Express, EJS, and SQLite. I will show the main pages, the organiser workflow, the attendee booking flow, and the extension for booking management.
+
+Main home page (10s)
+At the root URL you can see a minimal home page with links to the organiser and attendee areas.
+
+Organiser home page (25s)
+On the organiser home page, the site name and description are pulled from the database. I can create new events, and I can see separate lists for published and draft events. Each item shows title, date, created and published timestamps, and ticket capacities and prices for full and concession tickets.
+
+Create + edit event (25s)
+I will create a new event. This creates a draft record and redirects to the edit page. The edit form lets me update the title, description, date, and ticket capacities and prices. When I save, the updated timestamp is refreshed.
+
+Publish event (15s)
+Back on the organiser home page, I can publish a draft. Publishing updates the status, timestamps the publication date, and moves the event into the published list.
+
+Attendee home page (15s)
+On the attendee home page, published events are listed in date order so the next event appears first. The site name and description are the same settings from the database.
+
+Attendee event page + booking (30s)
+Clicking an event opens the attendee event page. It shows the event details, ticket prices, and remaining availability. I enter my name, choose ticket quantities, and book. The server validates availability and stores the booking in SQLite. After booking, the confirmation message appears and the availability updates.
+
+Extension: organiser booking management (30s)
+For the extension, each published event has a “View bookings” link. This page shows total full and concession bookings and lists each booking with attendee name, quantities, and timestamp. I can cancel a booking, which deletes the record and updates the totals.
+
+Wrap up (10s)
+That is the full workflow with server-side rendering and persistent storage in SQLite, plus the organiser booking management extension.

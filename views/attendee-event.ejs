@@ -1,0 +1,55 @@
+<!-- START MY CODE (attendee event page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <% function formatMoney(cents) { return (cents / 100).toFixed(2); } %>
+    <main class="container">
+        <h1>Attendee Event Page</h1>
+        <p class="muted"><strong><%= event.title %></strong> - <%= event.event_date %></p>
+        <div class="nav">
+            <a class="button" href="/">Main Home</a>
+            <a class="button" href="/organiser">Organiser Home</a>
+            <a class="button" href="/attendee">Back to Attendee Home</a>
+        </div>
+
+        <% if (error) { %>
+            <p class="alert"><%= error %></p>
+        <% } %>
+        <% if (success) { %>
+            <p class="success">Booked. See you there.</p>
+        <% } %>
+
+        <h2>Details</h2>
+        <p><%= event.description %></p>
+        <h3>Tickets</h3>
+        <p>Full: £<%= formatMoney(tickets.full.price_cents) %> (available: <%= availability.full %>)</p>
+        <p>Concession: £<%= formatMoney(tickets.concession.price_cents) %> (available: <%= availability.concession %>)</p>
+
+        <h2>Book</h2>
+        <form class="form" method="POST" action="/attendee/events/<%= event.event_id %>/book">
+                <label>
+                    Your name
+                    <input type="text" name="attendee_name" required />
+                </label>
+            <div class="form-grid">
+                <label>
+                    Full tickets
+                    <input type="number" name="full_qty" min="0" max="<%= availability.full %>" value="0" />
+                </label>
+                <label>
+                    Concession tickets
+                    <input type="number" name="concession_qty" min="0" max="<%= availability.concession %>" value="0" />
+                </label>
+            </div>
+                <button class="button primary" type="submit">Book</button>
+        </form>
+    </main>
+</body>
+</html>
+<!-- END MY CODE (attendee event page) -->
