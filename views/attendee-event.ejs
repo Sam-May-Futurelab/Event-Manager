@@ -1,4 +1,3 @@
-<!-- START MY CODE (attendee event page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +27,7 @@
         <h2>Details</h2>
         <p><%= event.description %></p>
         <h3>Tickets</h3>
+        <!-- availability is calculated server-side -->
         <p>Full: £<%= formatMoney(tickets.full.price_cents) %> (available: <%= availability.full %>)</p>
         <p>Concession: £<%= formatMoney(tickets.concession.price_cents) %> (available: <%= availability.concession %>)</p>
 
@@ -38,6 +38,7 @@
                     <input type="text" name="attendee_name" required />
                 </label>
             <div class="form-grid">
+                <!-- caps stop people booking more than is left -->
                 <label>
                     Full tickets
                     <input type="number" name="full_qty" min="0" max="<%= availability.full %>" value="0" />
@@ -52,4 +53,3 @@
     </main>
 </body>
 </html>
-<!-- END MY CODE (attendee event page) -->

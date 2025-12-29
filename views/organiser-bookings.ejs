@@ -1,4 +1,3 @@
-<!-- START MY CODE (organiser bookings page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,7 @@
 
         <section>
             <h2>Summary</h2>
+            <!-- quick totals so you can see load at a glance -->
             <p>Full tickets booked: <%= totals.full_booked %></p>
             <p>Concession tickets booked: <%= totals.concession_booked %></p>
         </section>
@@ -28,6 +28,7 @@
                 <p class="muted">No bookings yet.</p>
             <% } %>
             <div class="list">
+                <!-- each booking has a cancel button -->
                 <% bookings.forEach(function (booking) { %>
                     <article class="list-item">
                         <div>
@@ -47,4 +48,3 @@
     </main>
 </body>
 </html>
-<!-- END MY CODE (organiser bookings page) -->

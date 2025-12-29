@@ -1,4 +1,3 @@
-<!-- START MY CODE (organiser edit event page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +18,7 @@
             <p class="alert"><%= error %></p>
         <% } %>
         <form class="form" method="POST" action="/organiser/events/<%= event.event_id %>">
+            <!-- basic event info -->
             <label>
                 Event title
                 <input type="text" name="title" value="<%= event.title %>" required />
@@ -32,6 +32,7 @@
                 <input type="date" name="event_date" value="<%= event.event_date %>" required />
             </label>
             <div class="form-grid">
+            <!-- ticket numbers/prices -->
             <label>
                 Full ticket capacity
                 <input type="number" name="full_capacity" min="0" value="<%= tickets.full.capacity %>" required />
@@ -55,4 +56,3 @@
     </main>
 </body>
 </html>
-<!-- END MY CODE (organiser edit event page) -->
