@@ -1,3 +1,4 @@
+/* by Sam May for CM2040 Databases, Networks and the Web Midterm Coursework */
 * {
     box-sizing: border-box;
 }
@@ -17,6 +18,11 @@ body {
     padding: 2rem 1.25rem;
     background: #ffffff;
     min-height: 100vh;
+}
+
+/* simple center layout for the main landing page */
+.home-center {
+    text-align: center;
 }
 
 h1, h2, h3 {
@@ -104,10 +110,10 @@ label {
 
 input, textarea {
     padding: 0.5rem;
-    border: 1px solid #cccccc;
+border: 1px solid #cccccc;
 }
 
-/* button styles kept simple on purpose */
+/* simple button styles */
 .button {
     padding: 0.45rem 0.9rem;
     border: 1px solid #333333;
