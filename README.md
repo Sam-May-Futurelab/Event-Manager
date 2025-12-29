@@ -1,7 +1,5 @@
 ## Event Manager
 
-<!-- START MY CODE (README updates) -->
-
 ### Setup
 
 1) Install dependencies:
@@ -48,4 +46,3 @@ Open `http://localhost:3000/` in your browser.
 - `routes/organiser.js` (bookings list + cancel routes)
 - `views/organiser-bookings.ejs` (bookings page)
 - `views/organiser-home.ejs` (link to bookings)
-<!-- END MY CODE (README updates) -->
