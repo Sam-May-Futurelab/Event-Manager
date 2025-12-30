@@ -2,7 +2,7 @@
  * organiser.js
  * Routes for organiser-facing pages and actions.
  */
-
+// by Sam May for CM2040 Databases, Networks and the Web Midterm Coursework -->
 // === START MY CODE (organiser routes + extension) ===
 
 const express = require("express");
@@ -64,8 +64,8 @@ router.get("/", function (req, res, next) {
 
                 res.render("organiser-home.ejs", {
                     settings: settings || { site_name: "Event Manager", site_description: "" },
-                    publishedEvents: publishedEvents,
-                    draftEvents: draftEvents
+                publishedEvents: publishedEvents,
+                draftEvents: draftEvents
                 });
             });
         });

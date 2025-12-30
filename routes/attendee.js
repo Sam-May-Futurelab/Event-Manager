@@ -3,7 +3,7 @@
  * Routes for attendee-facing pages and actions.
  */
 
-// === START MY CODE (attendee routes) ===
+// by Sam May for CM2040 Databases, Networks and the Web Midterm Coursework -
 
 const express = require("express");
 const router = express.Router();
@@ -21,7 +21,7 @@ function buildTicketMap(tickets) {
  * @output Renders attendee home page
  */
 router.get("/", function (req, res, next) {
-    // DB: grab site settings for the header (settings_id=1)
+    // DB: grab site settings for the header settings_id=1
     const settingsQuery = "SELECT site_name, site_description FROM site_settings WHERE settings_id = 1";
     global.db.get(settingsQuery, function (err, settings) {
         if (err) {
@@ -29,7 +29,7 @@ router.get("/", function (req, res, next) {
             return;
         }
 
-        // DB: published events ordered by date (event_id, title, event_date)
+        // DB: published events ordered by date (event_id, title and event_date)
         const eventsQuery = `
             SELECT event_id, title, event_date
             FROM events
@@ -50,7 +50,7 @@ router.get("/", function (req, res, next) {
 });
 
 /**
- * @desc Display attendee event page
+ * @desc Displays the attendee event page
  * @input event_id
  * @output Renders event details and booking form
  */

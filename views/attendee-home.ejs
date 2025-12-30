@@ -1,3 +1,4 @@
+<!-- by Sam May for CM2040 Databases, Networks and the Web Midterm Coursework -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,8 @@
         <h1>Attendee Home Page</h1>
         <p class="muted"><strong><%= settings.site_name %></strong> - <%= settings.site_description %></p>
         <div class="nav">
-            <a class="button" href="/">Main Home</a>
-            <a class="button" href="/organiser">Organiser Home</a>
+        <a class="button" href="/">Main Home</a>
+        <a class="button" href="/organiser">Organiser Home</a>
         </div>
 
         <section>
@@ -25,8 +26,8 @@
                 <% events.forEach(function (event) { %>
                     <a class="list-item" href="/attendee/events/<%= event.event_id %>">
                         <div>
-                            <h3><%= event.title %></h3>
-                            <p class="muted">Date: <%= event.event_date %></p>
+                        <h3><%= event.title %></h3>
+                        <p class="muted">Date: <%= event.event_date %></p>
                         </div>
                     </a>
                 <% }); %>

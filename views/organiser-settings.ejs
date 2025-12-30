@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!-- by Sam May for CM2040 Databases, Networks and the Web Midterm Coursework -->
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -10,14 +11,14 @@
     <main class="container">
         <h1>Site Settings Page</h1>
         <div class="nav">
-            <a class="button" href="/">Main Home</a>
+        <a class="button" href="/">Main Home</a>
             <a class="button" href="/attendee">Attendee Home</a>
         </div>
         <% if (error) { %>
             <p class="alert"><%= error %></p>
         <% } %>
         <form class="form" method="POST" action="/organiser/settings">
-            <!-- keep both fields filled so it saves cleanly -->
+            <!-- keeps both of the fields filled to save cleanly -->
             <label>
                 Site name
                 <input type="text" name="site_name" value="<%= settings.site_name %>" required />
@@ -25,7 +26,7 @@
             <label>
                 Site description
                 <textarea name="site_description" rows="3" required><%= settings.site_description %></textarea>
-            </label>
+                </label>
             <button class="button primary" type="submit">Save</button>
         </form>
         <a class="button" href="/organiser">Back to Organiser Home</a>
